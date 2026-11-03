@@ -14,3 +14,7 @@ mkdir -p "$PREVIEW_APP/Contents/MacOS"
 ln -sfn "$PWD/Sources/Frontdrop/Resources" "$PREVIEW_APP/Contents/Resources"
 swiftc -sdk "$SDK_PATH" -swift-version 5 -parse-as-library Sources/Frontdrop/Models.swift Sources/Frontdrop/SceneRenderer.swift Tests/FrontdropTests/PreviewTests.swift -o "$PREVIEW_APP/Contents/MacOS/preview-tests"
 "$PREVIEW_APP/Contents/MacOS/preview-tests" "$1"
+
+# Check retained provider video with real WebKit and locally embedded media.
+swiftc -sdk "$SDK_PATH" -swift-version 5 -parse-as-library Sources/Frontdrop/Models.swift Sources/Frontdrop/LibraryStore.swift Sources/Frontdrop/LibraryStorage.swift Sources/Frontdrop/WorkshopVideoProject.swift Sources/Frontdrop/DesktopEngine.swift Sources/Frontdrop/SceneRenderer.swift Sources/Frontdrop/CatalogueSession.swift Sources/Frontdrop/CataloguePolicy.swift Sources/Frontdrop/CatalogueAdBlocker.swift Sources/Frontdrop/VideoArchive.swift Tests/FrontdropTests/CataloguePlaybackTests.swift -o .build/catalogue-playback-tests
+.build/catalogue-playback-tests "$1"

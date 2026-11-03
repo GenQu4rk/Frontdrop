@@ -132,7 +132,10 @@ final class DesktopEngine {
     private func tick() {
         updatePlayback()
         guard let store, store.state.enabled, pauseReason == nil, rotationSetting > 0 else { lastRotation = Date(); return }
-        if Date().timeIntervalSince(lastRotation) >= Double(rotationSetting*60) { store.nextScene() }
+        if Date().timeIntervalSince(lastRotation) >= Double(rotationSetting*60) {
+            lastRotation = Date()
+            store.nextScene()
+        }
     }
     private func tearDown() {
         for window in windows {

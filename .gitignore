@@ -5,3 +5,4 @@ dist/
 
 # Local design-review captures
 .impeccable/
+.quarkloop/

@@ -6,7 +6,7 @@ import Combine
 final class CatalogueSession: NSObject, ObservableObject, WKNavigationDelegate, WKUIDelegate, WKDownloadDelegate {
     @Published var source: CatalogueSource = .all { didSet { if source != oldValue { home() } } }
     @Published var provider: CatalogueProvider = .liveWallpapers4Free { didSet { if provider != oldValue { load(source.searchURL(searchTerm, provider: provider)) } } }
-    @Published var showsDirectory = true
+    @Published private(set) var showsDirectory = true
     private var searchTerm = ""
     @Published private(set) var nextPage: URL?
     @Published private(set) var previousPage: URL?
@@ -42,6 +42,8 @@ final class CatalogueSession: NSObject, ObservableObject, WKNavigationDelegate, 
     private var adRules: WKContentRuleList?
     private var browserReady = false
     private var pendingURL: URL?
+    private var visible = false
+    private var mediaSuspended = false
 
     @MainActor private final class Transfer {
         let download: WKDownload
@@ -96,15 +98,23 @@ final class CatalogueSession: NSObject, ObservableObject, WKNavigationDelegate, 
     }
     func connect(_ store: LibraryStore) { self.store = store }
     func show() {
-        webView.setAllMediaPlaybackSuspended(false, completionHandler: nil)
+        visible = true
+        syncMediaPlayback()
         if !showsDirectory && !loaded { load(catalogueHome) }
     }
-    func hide() { webView.setAllMediaPlaybackSuspended(true, completionHandler: nil) }
+    func hide() { visible = false; syncMediaPlayback() }
+    private func syncMediaPlayback() {
+        let suspended = !visible || showsDirectory
+        // WebKit counts suspension requests; duplicate hides need no extra request.
+        guard suspended != mediaSuspended else { return }
+        mediaSuspended = suspended
+        webView.setAllMediaPlaybackSuspended(suspended, completionHandler: nil)
+    }
     func load(_ url: URL) {
         guard CataloguePolicy.isWebURL(url) else { return }
         loaded = true
         showsDirectory = false
-        webView.setAllMediaPlaybackSuspended(false, completionHandler: nil)
+        syncMediaPlayback()
         nextPage = nil; previousPage = nil
         message = nil
         guard browserReady else { pendingURL = url; loading = true; return }
@@ -113,7 +123,7 @@ final class CatalogueSession: NSObject, ObservableObject, WKNavigationDelegate, 
     var catalogueHome: URL { source.home(provider: provider) }
     func search(_ query: String) { searchTerm = query; load(source.searchURL(query, provider: provider)) }
     func home() { searchTerm = ""; load(catalogueHome) }
-    func showSources() { showsDirectory = true; hide() }
+    func showSources() { showsDirectory = true; syncMediaPlayback() }
     func browse(_ provider: CatalogueProvider) {
         if self.provider == provider { load(source.searchURL(searchTerm, provider: provider)) }
         else { self.provider = provider }

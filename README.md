@@ -5,11 +5,23 @@
 <h1 align="center">Frontdrop</h1>
 <p align="center"><strong>A little atmosphere for your Mac.</strong></p>
 <p align="center">Native animated wallpapers. Original scenes, community videos, and your own collection.<br>No Frontdrop account, subscription, watermark, or analytics.</p>
-<p align="center"><a href="#build-and-run">Build &amp; run</a> · <a href="#make-it-yours">Features</a> · <a href="#built-in-scenes">Scenes</a> · <a href="#scope-and-compatibility">Compatibility</a></p>
+<p align="center"><a href="https://github.com/GenQu4rk/Frontdrop/releases/latest">Download .dmg</a> · <a href="#build-and-run">Build from source</a> · <a href="#make-it-yours">Features</a> · <a href="#built-in-scenes">Scenes</a></p>
 
 ![Frontdrop's native library with a wallpaper preview, scene collection, favourites, and display controls](docs/frontdrop-revised.png)
 
 Frontdrop puts muted, looping video and original Metal animations behind your desktop icons. Pick a scene, preview it, and click **Set Wallpaper**. Stop or quit to reveal your existing macOS wallpaper; your saved system wallpaper stays intact.
+
+## Download and install
+
+Get the **Apple silicon (arm64) DMG** from [GitHub Releases](https://github.com/GenQu4rk/Frontdrop/releases/latest). Requires macOS 14 or later.
+
+1. Open the DMG. Quit any running copy of Frontdrop before updating.
+2. Drag **Frontdrop.app** onto **Applications**.
+3. Eject the disk image, open Frontdrop from Applications, and click **Set Wallpaper**.
+
+The community build is **ad-hoc signed and not notarized by Apple**. If macOS blocks it, review [Apple's guidance for opening downloaded apps](https://support.apple.com/en-gb/102445). A SHA-256 checksum accompanies each DMG; download both files to the same folder and verify with `shasum -a 256 -c Frontdrop-1.5.3-arm64.dmg.sha256`.
+
+Intel Macs can build from source; Intel runtime behaviour has not been verified.
 
 ## Build and run
 
@@ -25,6 +37,8 @@ open dist/Frontdrop.app
 If the developer tools are missing, install them with `xcode-select --install` first. The build script packages and ad-hoc signs `dist/Frontdrop.app`; it does not create a notarized release. You can copy the built app to your Applications folder.
 
 `Package.swift` supports source navigation and package-based builds. Use `scripts/build.sh` for the packaged macOS app. To choose a specific SDK, set `FRONTDROP_SDK_PATH` when running the script.
+
+To create a distributable DMG and checksum on your Mac, run `./scripts/package-dmg.sh`. It rebuilds the app and writes architecture-labelled files to `dist/`.
 
 ## Make it yours
 

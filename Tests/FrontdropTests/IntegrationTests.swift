@@ -117,6 +117,26 @@ struct IntegrationTests {
         try FileManager.default.removeItem(at: metadata)
         try savedMetadata.write(to: metadata)
         print("PASS: failed metadata commit rejects import without publishing or leaving an unmanaged copy")
+        configuredStore.apply(configuredVideo)
+        configuredStore.favourite(configuredVideo)
+        let beforeRemoval = configuredStore.state
+        let removalMetadata = try Data(contentsOf: metadata)
+        let removalVideo = configuredStore.videoURL(for: configuredVideo)!
+        try FileManager.default.removeItem(at: metadata)
+        try FileManager.default.createDirectory(at: metadata, withIntermediateDirectories: false)
+        configuredStore.remove(configuredVideo)
+        precondition(configuredStore.error != nil, "A failed removal commit must report the error")
+        precondition(FileManager.default.fileExists(atPath: removalVideo.path), "A failed removal commit must preserve the managed video")
+        precondition(configuredStore.state.imports == beforeRemoval.imports && configuredStore.state.favourites == beforeRemoval.favourites && configuredStore.state.activeID == beforeRemoval.activeID && configuredStore.state.enabled == beforeRemoval.enabled, "A failed removal commit must preserve published library and playback state")
+        try FileManager.default.removeItem(at: metadata)
+        try removalMetadata.write(to: metadata)
+        let removalReload = LibraryStore(storage: storage)
+        precondition(removalReload.state.imports.contains(configuredVideo) && FileManager.default.fileExists(atPath: removalReload.videoURL(for: configuredVideo)!.path), "Reopening after a failed removal must retain playable media")
+        configuredStore.error = nil
+        configuredStore.remove(configuredVideo)
+        precondition(configuredStore.error == nil && configuredStore.state.imports.isEmpty && !configuredStore.state.enabled && !FileManager.default.fileExists(atPath: removalVideo.path), "Successful removal must commit metadata and remove the owned copy")
+        precondition(FileManager.default.fileExists(atPath: source.path), "Removal must keep the original video")
+        print("PASS: failed removal preserves media and state across reopen; successful removal keeps original")
         try FileManager.default.removeItem(at: configuredRoot)
         var unavailable = false
         do { _ = try configuredStore.prepareIncomingDirectory() } catch { unavailable = true }

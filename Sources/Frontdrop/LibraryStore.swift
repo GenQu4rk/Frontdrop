@@ -187,14 +187,18 @@ final class LibraryStore: ObservableObject {
         guard scene.shader == nil, let url = videoURL(for: scene) else { return }
         do {
             try requireStorageAvailable()
-            if FileManager.default.fileExists(atPath: url.path) { try FileManager.default.removeItem(at: url) }
             var next = state
             next.imports.removeAll { $0.id == scene.id }
             next.favourites.remove(scene.id)
             if next.activeID == scene.id { next.activeID = Wallpaper.builtins[0].id; next.enabled = false }
+            // A failed metadata commit must leave the video and published state intact.
+            try save(next)
             state = next
             thumbnails[scene.id] = nil
             if selectedID == scene.id { selectedID = Wallpaper.builtins[0].id }
+            do {
+                if FileManager.default.fileExists(atPath: url.path) { try FileManager.default.removeItem(at: url) }
+            } catch { self.error = "The video was removed from your library, but its file could not be deleted: \(error.localizedDescription)" }
         } catch { self.error = "Could not remove this video: \(error.localizedDescription)" }
     }
     func loadThumbnails() async { for scene in scenes { await loadThumbnail(scene); await Task.yield() } }

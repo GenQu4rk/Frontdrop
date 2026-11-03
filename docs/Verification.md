@@ -1,5 +1,19 @@
 # Verification — 19 October 2026
 
+## Release check — 1.5.3 (3 November 2026)
+
+Prepared an Apple silicon DMG with the repeatable `scripts/package-dmg.sh` workflow. This build is ad-hoc signed, not Developer ID signed or notarized. Historical checks below remain dated records, not claims of current coverage.
+
+- Reproduced a failed-removal metadata write deleting its managed video. Added an integration regression that blocks `library.json` writes, checks that media and library/playback state survive, reopens the saved library, and then verifies successful removal preserves the original. It failed before the fix and passed afterward.
+- Reproduced retained browser video resuming behind the source directory, and repeated hide calls leaving visible video suspended. The new real-WebKit regression uses an embedded local H.264 fixture, cancels fixture HTTPS navigation, and checks directory/hidden-load suspension and idempotent show/hide. Both original failures were observed before the fix.
+- A disposable probe compiled the production DesktopEngine with a test-only same-file extension to seed an expired rotation interval. One favourite produced three state publications on three immediate ticks before the fix; afterward it produced one. No production test hooks or five-minute waits were added.
+- `scripts/test.sh` passed all standalone harnesses. `scripts/integration-test.sh` passed real video import/loop/pause/framing, persistence, failed import/removal commits, Workshop import, preview selection, and browser media lifecycle checks with isolated temporary data.
+- Built version 1.5.3, build 12. The compressed DMG passed `hdiutil verify`, read-only attachment, strict app signature verification, Applications-link and payload checks, executable hash comparison against the build, SHA-256 sidecar verification, and clean detach.
+- Ran `--render-previews` from the mounted app: all eight scenes rendered and changed over time. Raw investigation captures are excluded from the shipping app, including when rebuilding an existing `dist/` bundle.
+- Native read-only inspection of the existing installed app covered library controls, source directory, an embedded provider page, and settings. It did not change saved wallpaper preferences or imported media. Playback policies and close/reopen behavior remain covered by their automated harnesses.
+
+Not covered: Intel runtime, older macOS runtime, every remote provider download flow, every hardware/power/display transition, or a notarized first-install path. No claim of exhaustive bug freedom is made. The GitHub release must be verified separately after publication.
+
 Environment: Apple silicon Mac, macOS 26.6.2 (25G83), Swift 6.4 command-line tools. Built against the installed macOS 26.5 SDK, deployment target 14.0. The 27 preview SDK lacks the new SwiftUI macro plugin in this command-line-tool installation. No toolchain installation or global configuration change was needed.
 
 ## Passed automated checks
