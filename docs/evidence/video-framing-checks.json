@@ -1,0 +1,32 @@
+{
+  "checked_at": "2026-10-20",
+  "version": "1.5.1",
+  "build": 10,
+  "binary_sha256": "535937db79ed00f9f19d02f73deccd0ddfdc0cdf28a27aa02c41a11f8346c8dd",
+  "active_wallpaper_id": "04E660E6-1BAD-405E-A6F2-381E6A04701B",
+  "source_video_pixels": [
+    3840,
+    2160
+  ],
+  "display_pixels": [
+    2940,
+    1912
+  ],
+  "old_scaling": "resizeAspectFill",
+  "new_default": "resizeAspect",
+  "legacy_missing_preference": "Fit whole video",
+  "per_wallpaper_override": "Fill screen",
+  "native_ui_observations": [
+    "Active wallpaper inspector shows Fit whole video.",
+    "Player screenshot after closing library shows the full source width, with black bars at top and bottom.",
+    "Source itself has an edge-framed right character; no attempt was made to invent missing source artwork."
+  ],
+  "saved_library_unchanged": true,
+  "tests": [
+    "23 playback/display/persistence checks, including legacy/default framing and saved override",
+    "Desktop Fit/Fill updates without rebuilding wallpaper windows/players",
+    "Preview same-video Fit/Fill updates use existing decoder",
+    "Existing integration, catalogue, archive, Workshop and lifecycle suites pass"
+  ],
+  "review": "No actionable findings in independent framing review."
+}

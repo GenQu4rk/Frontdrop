@@ -1,0 +1,7 @@
+.build/
+dist/
+.DS_Store
+.swiftpm/
+
+# Local design-review captures
+.impeccable/

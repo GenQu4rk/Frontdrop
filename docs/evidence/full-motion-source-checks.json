@@ -1,0 +1,88 @@
+{
+  "method": "Public preview/original videos sampled into frames for motion inspection; temporary media is not bundled with Frontdrop. App uses only live provider pages, no remote catalogue API.",
+  "observations": [
+    {
+      "title": "Anime fight",
+      "page": "https://www.sakugabooru.com/post/show/319568",
+      "observation": "Actual multi-shot swordfight with character movement and camera cuts",
+      "inspected_media_sha256": "805a5382f7b5fc17efc0e218ea91edb01c3c668ce879ecb558374b23fb3c161d",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 854,
+            "height": 480
+          }
+        ],
+        "format": {
+          "duration": "38.122125"
+        }
+      }
+    },
+    {
+      "title": "Space flight",
+      "page": "https://mixkit.co/free-stock-video/traveling-through-the-nebulae-of-space-30889/",
+      "observation": "Camera travels through the nebula environment",
+      "inspected_media_sha256": "2a1a291b055a31980b7cea241f8a016b9008d23e6b138f8ee957461d437199b5",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 640,
+            "height": 360
+          }
+        ],
+        "format": {
+          "duration": "15.000000"
+        }
+      }
+    },
+    {
+      "title": "Tengen Fight",
+      "page": "https://motionbgs.com/tengen-uzui-fight",
+      "observation": "Rejected for this preference: mostly still portrait with effects",
+      "inspected_media_sha256": "01dde0ec192f3f96715af3057640a14c68b648d6879cd5efb8cadd9fc7dc7fb5",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 960,
+            "height": 540
+          }
+        ],
+        "format": {
+          "duration": "10.066667"
+        }
+      }
+    },
+    {
+      "title": "Zoro Sword Fight",
+      "page": "https://www.desktophut.com/zoro-sword-fight",
+      "observation": "Rejected for this preference: mostly still portrait with effects",
+      "inspected_media_sha256": "48d455b67a1940b9daeb319ba6f91946ab602e3559f47c419acd0fffaac10220",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 960,
+            "height": 540
+          },
+          {
+            "codec_name": "aac"
+          }
+        ],
+        "format": {
+          "duration": "10.009633"
+        }
+      }
+    }
+  ]
+}

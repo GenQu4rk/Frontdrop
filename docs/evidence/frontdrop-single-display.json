@@ -1,0 +1,192 @@
+[
+  {
+    "kCGWindowAlpha" : 1,
+    "kCGWindowBounds" : {
+      "Height" : 33,
+      "Width" : 1470,
+      "X" : 0,
+      "Y" : 0
+    },
+    "kCGWindowLayer" : 0,
+    "kCGWindowMemoryUsage" : 2368,
+    "kCGWindowName" : "",
+    "kCGWindowNumber" : 7834,
+    "kCGWindowOwnerName" : "Frontdrop",
+    "kCGWindowOwnerPID" : 26528,
+    "kCGWindowSharingState" : 1,
+    "kCGWindowStoreType" : 1
+  },
+  {
+    "kCGWindowAlpha" : 1,
+    "kCGWindowBounds" : {
+      "Height" : 33,
+      "Width" : 1470,
+      "X" : 0,
+      "Y" : 0
+    },
+    "kCGWindowLayer" : 0,
+    "kCGWindowMemoryUsage" : 2368,
+    "kCGWindowName" : "",
+    "kCGWindowNumber" : 7832,
+    "kCGWindowOwnerName" : "Frontdrop",
+    "kCGWindowOwnerPID" : 26528,
+    "kCGWindowSharingState" : 1,
+    "kCGWindowStoreType" : 1
+  },
+  {
+    "kCGWindowAlpha" : 1,
+    "kCGWindowBounds" : {
+      "Height" : 820,
+      "Width" : 1120,
+      "X" : 175,
+      "Y" : 39
+    },
+    "kCGWindowIsOnscreen" : true,
+    "kCGWindowLayer" : 0,
+    "kCGWindowMemoryUsage" : 2368,
+    "kCGWindowName" : "Frontdrop",
+    "kCGWindowNumber" : 7829,
+    "kCGWindowOwnerName" : "Frontdrop",
+    "kCGWindowOwnerPID" : 26528,
+    "kCGWindowSharingState" : 1,
+    "kCGWindowStoreType" : 1
+  },
+  {
+    "kCGWindowAlpha" : 1,
+    "kCGWindowBounds" : {
+      "Height" : 33,
+      "Width" : 1470,
+      "X" : 0,
+      "Y" : 0
+    },
+    "kCGWindowLayer" : 0,
+    "kCGWindowMemoryUsage" : 2368,
+    "kCGWindowName" : "",
+    "kCGWindowNumber" : 7835,
+    "kCGWindowOwnerName" : "Frontdrop",
+    "kCGWindowOwnerPID" : 26528,
+    "kCGWindowSharingState" : 1,
+    "kCGWindowStoreType" : 1
+  },
+  {
+    "kCGWindowAlpha" : 1,
+    "kCGWindowBounds" : {
+      "Height" : 33,
+      "Width" : 1470,
+      "X" : 0,
+      "Y" : 0
+    },
+    "kCGWindowLayer" : 0,
+    "kCGWindowMemoryUsage" : 2368,
+    "kCGWindowName" : "",
+    "kCGWindowNumber" : 7833,
+    "kCGWindowOwnerName" : "Frontdrop",
+    "kCGWindowOwnerPID" : 26528,
+    "kCGWindowSharingState" : 1,
+    "kCGWindowStoreType" : 1
+  },
+  {
+    "kCGWindowAlpha" : 1,
+    "kCGWindowBounds" : {
+      "Height" : 20,
+      "Width" : 66,
+      "X" : 191,
+      "Y" : 55
+    },
+    "kCGWindowIsOnscreen" : true,
+    "kCGWindowLayer" : 0,
+    "kCGWindowMemoryUsage" : 2368,
+    "kCGWindowName" : "Window",
+    "kCGWindowNumber" : 7863,
+    "kCGWindowOwnerName" : "Frontdrop",
+    "kCGWindowOwnerPID" : 26528,
+    "kCGWindowSharingState" : 1,
+    "kCGWindowStoreType" : 1
+  },
+  {
+    "kCGWindowAlpha" : 1,
+    "kCGWindowBounds" : {
+      "Height" : 956,
+      "Width" : 1470,
+      "X" : 0,
+      "Y" : 0
+    },
+    "kCGWindowIsOnscreen" : true,
+    "kCGWindowLayer" : -2147483622,
+    "kCGWindowMemoryUsage" : 2368,
+    "kCGWindowName" : "Frontdrop Wallpaper — Built-in Retina Display",
+    "kCGWindowNumber" : 7862,
+    "kCGWindowOwnerName" : "Frontdrop",
+    "kCGWindowOwnerPID" : 26528,
+    "kCGWindowSharingState" : 1,
+    "kCGWindowStoreType" : 1
+  },
+  {
+    "kCGWindowAlpha" : 1,
+    "kCGWindowBounds" : {
+      "Height" : 30,
+      "Width" : 2560,
+      "X" : -2560,
+      "Y" : -220
+    },
+    "kCGWindowLayer" : 0,
+    "kCGWindowMemoryUsage" : 2368,
+    "kCGWindowName" : "",
+    "kCGWindowNumber" : 7838,
+    "kCGWindowOwnerName" : "Frontdrop",
+    "kCGWindowOwnerPID" : 26528,
+    "kCGWindowSharingState" : 1,
+    "kCGWindowStoreType" : 1
+  },
+  {
+    "kCGWindowAlpha" : 1,
+    "kCGWindowBounds" : {
+      "Height" : 30,
+      "Width" : 2560,
+      "X" : -2560,
+      "Y" : -220
+    },
+    "kCGWindowLayer" : 0,
+    "kCGWindowMemoryUsage" : 2368,
+    "kCGWindowName" : "",
+    "kCGWindowNumber" : 7839,
+    "kCGWindowOwnerName" : "Frontdrop",
+    "kCGWindowOwnerPID" : 26528,
+    "kCGWindowSharingState" : 1,
+    "kCGWindowStoreType" : 1
+  },
+  {
+    "kCGWindowAlpha" : 1,
+    "kCGWindowBounds" : {
+      "Height" : 30,
+      "Width" : 2560,
+      "X" : -2560,
+      "Y" : -220
+    },
+    "kCGWindowLayer" : 0,
+    "kCGWindowMemoryUsage" : 2368,
+    "kCGWindowName" : "",
+    "kCGWindowNumber" : 7837,
+    "kCGWindowOwnerName" : "Frontdrop",
+    "kCGWindowOwnerPID" : 26528,
+    "kCGWindowSharingState" : 1,
+    "kCGWindowStoreType" : 1
+  },
+  {
+    "kCGWindowAlpha" : 1,
+    "kCGWindowBounds" : {
+      "Height" : 30,
+      "Width" : 2560,
+      "X" : -2560,
+      "Y" : -220
+    },
+    "kCGWindowLayer" : 0,
+    "kCGWindowMemoryUsage" : 2368,
+    "kCGWindowName" : "",
+    "kCGWindowNumber" : 7836,
+    "kCGWindowOwnerName" : "Frontdrop",
+    "kCGWindowOwnerPID" : 26528,
+    "kCGWindowSharingState" : 1,
+    "kCGWindowStoreType" : 1
+  }
+]

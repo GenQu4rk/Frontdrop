@@ -1,0 +1,25 @@
+{
+  "version": "1.5.2",
+  "build": 11,
+  "date": "2026-10-20",
+  "directory": "/Volumes/MicroSD/Frontdrop/Library",
+  "volumeUUID": "3126CDA8-33BD-4691-B6B0-F39017F36E95",
+  "importCount": 11,
+  "fileCount": 12,
+  "bytes": 178982905,
+  "allMigrationHashesMatch": true,
+  "libraryMetadataByteIdenticalAfterRelaunch": true,
+  "internalMediaCopiesRemoved": true,
+  "legacyPathIsSymlink": true,
+  "installedSettingsPathVerified": true,
+  "all19WallpapersVisible": true,
+  "activePlaybackAndFramingPreserved": true,
+  "externalVolumeIntegrationPassed": true,
+  "metadataFailureRegressionObservedFailThenPass": true,
+  "independentReview": "approved; no blockers",
+  "executableSHA256": "cd8271b11698594ea0b241dd4ed593b7972fa75eb86deccf44fcaa0572f15e7d",
+  "limitations": [
+    "No physical card ejection performed while running; unavailable/mismatched-volume behavior exercised with isolated fixtures.",
+    "Browser cache and tiny storage locator use normal macOS locations; managed wallpaper files and download/archive staging use configured library."
+  ]
+}

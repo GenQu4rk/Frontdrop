@@ -1,0 +1,78 @@
+[
+  {
+    "path": "/Applications/Backdrop.app/Contents/Resources/3B2922AA-19BD-4D54-B43E-B45EE5DFA56E-manifest.json",
+    "sha256": "eb681465a37e6427c7b0ef9941fd9497de0e898aee19f79d78a215d999c7cb22",
+    "data": {
+      "id": "3B2922AA-19BD-4D54-B43E-B45EE5DFA56E",
+      "title": "Dancing Petals",
+      "details": "Smooth, glowing abstract forms in shades of blue, purple, and pink flow gently across a dark background.",
+      "categoryIdentifier": "abstract",
+      "type": "video",
+      "appVersion": "3",
+      "version": 1,
+      "checksum": "89b1fc30b78b47724857ee9501d85b0d6377bd8940447d0894f6dd116a736579",
+      "sourceChecksum": "1c4962385c407e733111daa3ba3cf1c257d5a34ae6cba499d7e663b4b4fdcad2",
+      "duration": 5.1,
+      "fileSize": 10102620,
+      "bitrate": 15738960,
+      "width": 3300,
+      "height": 2160,
+      "thumbnailTimestamp": 4.446213459,
+      "contentRating": "",
+      "linkTitle": "",
+      "linkURL": "",
+      "resolutionTier": "4K",
+      "motionLevel": "dynamic",
+      "qualityScore": 115,
+      "popularityScore": 635,
+      "aspectRatio": 1.528,
+      "colors": [
+        "purple",
+        "pink"
+      ],
+      "keywords": [
+        "petals",
+        "fluid",
+        "glow",
+        "dancing",
+        "calm",
+        "abstract",
+        "dancing petals",
+        "cindori"
+      ],
+      "tags": [
+        "calm",
+        "abstract",
+        "fluid",
+        "glow",
+        "cindori"
+      ],
+      "createdAt": "2026-03-28T16:43:22Z",
+      "modifiedAt": "2026-05-06T17:14:53Z",
+      "files": {
+        "asset": "3B2922AA-19BD-4D54-B43E-B45EE5DFA56E-asset.mov",
+        "largeThumbnail": "3B2922AA-19BD-4D54-B43E-B45EE5DFA56E-thumbnail-large.heic",
+        "preview": "3B2922AA-19BD-4D54-B43E-B45EE5DFA56E-preview.mov",
+        "largePreview": "3B2922AA-19BD-4D54-B43E-B45EE5DFA56E-preview-large.mov"
+      }
+    }
+  },
+  {
+    "path": "/Applications/Backdrop.app/Contents/Library/LaunchAgents/com.cindori.Backdrop.Wallpaper.agent.plist",
+    "sha256": "d57dcf3153e961fd729c74c50b41f223afcee29fc94de78b64c97920372eafc2",
+    "data": {
+      "Label": "com.cindori.Backdrop.Wallpaper.agent",
+      "BundleProgram": "Contents/Resources/BackdropWallpaper.app/Contents/MacOS/BackdropWallpaper",
+      "ProgramArguments": [
+        "BackdropWallpaper",
+        "--wallpaper-agent"
+      ],
+      "LimitLoadToSessionType": "Aqua",
+      "MachServices": {
+        "com.cindori.Backdrop.Wallpaper.agent": true
+      },
+      "RunAtLoad": false,
+      "KeepAlive": false
+    }
+  }
+]

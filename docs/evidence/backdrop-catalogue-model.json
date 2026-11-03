@@ -1,0 +1,131 @@
+{
+  "authority" : "bundled model schema; no user records read",
+  "entities" : [
+    {
+      "attributes" : [
+        "identifier",
+        "matchingInterests",
+        "modificationDate",
+        "recordID",
+        "symbol",
+        "title"
+      ],
+      "entity" : "CatalogPage",
+      "relationships" : [
+        "catalog",
+        "sections"
+      ]
+    },
+    {
+      "attributes" : [
+        "title"
+      ],
+      "entity" : "Submission",
+      "relationships" : [
+
+      ]
+    },
+    {
+      "attributes" : [
+        "artworkSourceID",
+        "backdropIDsData",
+        "collectionDescription",
+        "identifier",
+        "largeThumbnailID",
+        "recordID",
+        "thumbnailID",
+        "title"
+      ],
+      "entity" : "CollectionSnapshot",
+      "relationships" : [
+        "catalog"
+      ]
+    },
+    {
+      "attributes" : [
+        "collectionRecordIDsData",
+        "coverWallpaperID",
+        "detailRoute",
+        "detailTitle",
+        "identifier",
+        "items",
+        "modificationDate",
+        "recordID",
+        "style",
+        "title"
+      ],
+      "entity" : "ShelfSection",
+      "relationships" : [
+        "pages"
+      ]
+    },
+    {
+      "attributes" : [
+        "hasCollectionRegistry",
+        "identifier",
+        "modificationDate",
+        "recordID"
+      ],
+      "entity" : "Catalog",
+      "relationships" : [
+        "collections",
+        "pages"
+      ]
+    },
+    {
+      "attributes" : [
+        "identifier",
+        "modificationDate",
+        "recordID"
+      ],
+      "entity" : "CatalogSection",
+      "relationships" : [
+        "pages"
+      ]
+    },
+    {
+      "attributes" : [
+        "recordID"
+      ],
+      "entity" : "User",
+      "relationships" : [
+
+      ]
+    },
+    {
+      "attributes" : [
+        "appVersion",
+        "bitrate",
+        "categoryIdentifier",
+        "checksum",
+        "contentRating",
+        "createdAt",
+        "details",
+        "dominantColors",
+        "duration",
+        "fileSize",
+        "height",
+        "identifier",
+        "insertedAt",
+        "keywords",
+        "linkTitle",
+        "linkURL",
+        "modifiedAt",
+        "recordID",
+        "sourceChecksum",
+        "submissionID",
+        "tags",
+        "thumbnailTimestamp",
+        "title",
+        "type",
+        "version",
+        "width"
+      ],
+      "entity" : "Backdrop",
+      "relationships" : [
+
+      ]
+    }
+  ],
+  "path" : "\/Applications\/Backdrop.app\/Contents\/Resources\/Backdrop.momd\/BDCollectionsV2.mom"
+}

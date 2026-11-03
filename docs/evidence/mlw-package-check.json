@@ -1,0 +1,34 @@
+{
+  "checked_at": "2026-10-20",
+  "source": "https://mylivewallpapers.com/anime/tanjiro-kamado-rain-forest-live-wallpaper/",
+  "rea_open_binary": {
+    "format": "zip",
+    "kind": "archive",
+    "sha256": "070aa113da7c6a54d56b82c15885d030881faa91854fb22da511632e8f8886ec"
+  },
+  "package_members": [
+    {
+      "name": "Read-Me.txt",
+      "uncompressed_bytes": 377
+    },
+    {
+      "name": "instructions.jpg",
+      "uncompressed_bytes": 300801
+    },
+    {
+      "name": "mylivewallpapers-com-Tanjiro-Kamado-Rain-Forest-4K.mlw",
+      "uncompressed_bytes": 35206224
+    }
+  ],
+  "mlw": {
+    "byte_length": 35206224,
+    "magic_ascii": "MLW.VIDEO",
+    "sha256": "5f3c2763286379b9f31aafb774b1fa08c6c6dc1849935dd55a965b1fd16cdf8f"
+  },
+  "observations": [
+    "No ftyp/moov/mdat marker was found by a literal-byte scan; not a complete format or encryption analysis.",
+    "Read-Me.txt directs the user to the Windows software.",
+    "Rejected as a direct playable source; no decoder or bypass implemented."
+  ],
+  "media_bundled": false
+}

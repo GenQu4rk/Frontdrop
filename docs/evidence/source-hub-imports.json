@@ -1,0 +1,62 @@
+{
+  "checked_at": "2026-10-20",
+  "native_webkit_downloads": [
+    {
+      "wallpaper": {
+        "filename": "830D1980-5634-4225-A338-6731A0A46677.mp4",
+        "subtitle": "Downloaded from livewallpapers4free.com",
+        "title": "Spyro Reignited Trilogy - Free",
+        "id": "830D1980-5634-4225-A338-6731A0A46677",
+        "category": "Downloaded",
+        "sourceURL": "https://livewallpapers4free.com/spyro-reignited-trilogy-free-live-wallpaper/"
+      },
+      "sha256": "60052fc6ab73ebcf24b1e75a8dfcb958ce7506e7a7f4c43e12d018b6d0fc5eb9",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080
+          }
+        ],
+        "format": {
+          "duration": "11.033344",
+          "size": "1812652"
+        }
+      },
+      "observation": "Verified playable MP4. Sampled frames show mostly a fixed composition with effects/zoom; not promoted as full-scene action."
+    },
+    {
+      "wallpaper": {
+        "filename": "602566D3-957C-4A70-BF0D-8A8AB539C7CF.mp4",
+        "subtitle": "Downloaded from livewallpapers4free.com",
+        "title": "A Journey Into the Endless Green Horizon - LiveWallpapers4Free.com",
+        "id": "602566D3-957C-4A70-BF0D-8A8AB539C7CF",
+        "category": "Downloaded",
+        "sourceURL": "https://livewallpapers4free.com/a-journey-into-the-endless-green-horizon/"
+      },
+      "sha256": "7b46b5556292498c52d12fdc2eced551e5f6f6eb2297938be969182b5662fca3",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "hevc",
+            "width": 1920,
+            "height": 1080
+          }
+        ],
+        "format": {
+          "duration": "7.674333",
+          "size": "6080633"
+        }
+      },
+      "observation": "Verified playable MP4. Sampled frames show mostly a fixed composition with effects/zoom; not promoted as full-scene action."
+    }
+  ],
+  "pre_existing_imports_preserved": 6,
+  "previous_playback_settings_unchanged": true,
+  "source_media_bundled": false
+}

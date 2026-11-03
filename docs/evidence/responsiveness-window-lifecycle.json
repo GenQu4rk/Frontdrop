@@ -1,0 +1,56 @@
+{
+  "open": {
+    "activationPolicy": 0,
+    "pid": 33340,
+    "visibleWindows": [
+      {
+        "id": 9013,
+        "title": "Frontdrop Wallpaper \u2014 DELL P2723DE"
+      },
+      {
+        "id": 9012,
+        "title": "Frontdrop Wallpaper \u2014 Built-in Retina Display"
+      },
+      {
+        "id": 9011,
+        "title": "Frontdrop"
+      },
+      {
+        "id": 9028,
+        "title": "Window"
+      }
+    ]
+  },
+  "closed": {
+    "activationPolicy": 1,
+    "pid": 33340,
+    "visibleWindows": [
+      {
+        "id": 9013,
+        "title": "Frontdrop Wallpaper \u2014 DELL P2723DE"
+      },
+      {
+        "id": 9012,
+        "title": "Frontdrop Wallpaper \u2014 Built-in Retina Display"
+      }
+    ]
+  },
+  "reopened": {
+    "activationPolicy": 0,
+    "pid": 33340,
+    "visibleWindows": [
+      {
+        "id": 9013,
+        "title": "Frontdrop Wallpaper \u2014 DELL P2723DE"
+      },
+      {
+        "id": 9012,
+        "title": "Frontdrop Wallpaper \u2014 Built-in Retina Display"
+      },
+      {
+        "id": 9011,
+        "title": "Frontdrop"
+      }
+    ]
+  }
+}
