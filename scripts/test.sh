@@ -22,3 +22,6 @@ swiftc Sources/Frontdrop/VideoArchive.swift Tests/FrontdropTests/VideoArchiveTes
 
 swiftc Sources/Frontdrop/LibraryStorage.swift Tests/FrontdropTests/LibraryStorageTests.swift -o .build/storage-tests
 .build/storage-tests
+
+swiftc Sources/Frontdrop/UpdateChecker.swift Tests/FrontdropTests/UpdateCheckerTests.swift -o .build/update-checker-tests
+.build/update-checker-tests

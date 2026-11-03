@@ -19,7 +19,7 @@ Get the **Apple silicon (arm64) DMG** from [GitHub Releases](https://github.com/
 2. Drag **Frontdrop.app** onto **Applications**.
 3. Eject the disk image, open Frontdrop from Applications, and click **Set Wallpaper**.
 
-The community build is **ad-hoc signed and not notarized by Apple**. If macOS blocks it, review [Apple's guidance for opening downloaded apps](https://support.apple.com/en-gb/102445). A SHA-256 checksum accompanies each DMG; download both files to the same folder and verify with `shasum -a 256 -c Frontdrop-1.5.3-arm64.dmg.sha256`.
+The community build is **ad-hoc signed and not notarized by Apple**. If macOS blocks it, review [Apple's guidance for opening downloaded apps](https://support.apple.com/en-gb/102445). A SHA-256 checksum accompanies each DMG; download both files to the same folder and verify with `shasum -a 256 -c Frontdrop-1.6.0-arm64.dmg.sha256`.
 
 Intel Macs can build from source; Intel runtime behaviour has not been verified.
 
@@ -40,10 +40,12 @@ If the developer tools are missing, install them with `xcode-select --install` f
 
 To create a distributable DMG and checksum on your Mac, run `./scripts/package-dmg.sh`. It rebuilds the app and writes architecture-labelled files to `dist/`.
 
+To publish an update, increment the version and build number in `packaging/Info.plist`, add `docs/releases/vVERSION.md`, commit those changes on `main`, then run `./scripts/publish-release.sh` while signed into `gh` as **GenQu4rk**. The script tests, builds, checks the DMG, pushes `main`, and publishes a public GitHub Release with the DMG and checksum. Installed copies can find the latest compatible release with **Settings → Frontdrop → Check for Updates**; users install it by downloading the new DMG.
+
 ## Make it yours
 
 - **Start with eight original scenes.** Abstract colour, alpine mist, northern lights, a quiet railway, and space. Bundled scenes work offline.
-- **Bring your own videos.** Import MP4, MOV, M4V, and other AVFoundation-playable files. Frontdrop copies imports into its managed library so moving the original does not break playback.
+- **Bring your own videos.** Click **Add your own MP4** to choose files from your Mac, or drop videos into the window. Select multiple MP4, MOV, M4V, or other AVFoundation-playable files and name each wallpaper as you add it. Frontdrop copies imports into its managed library so moving the original does not break playback.
 - **Find community wallpapers.** Browse LiveWallpapers4Free, MotionBGS, and DesktopHut inside the app. Eleven subject collections, provider switching, title search, and pagination help you explore. Supported downloads are validated and added to **Downloaded** with their source link.
 - **Import Workshop Video projects.** Choose a downloaded Wallpaper Engine **Video** project folder. Frontdrop reads its `project.json`, imports the actual video, and keeps the title and source attribution.
 - **Choose your framing and displays.** Keep every edge with **Fit whole video**, or crop to cover with **Fill screen**. Apply to all displays, the main display, or one selected display. Framing is saved per video.

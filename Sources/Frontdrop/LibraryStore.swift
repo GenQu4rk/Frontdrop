@@ -119,14 +119,37 @@ final class LibraryStore: ObservableObject {
             if enabled && !loginEnabled { error = "Allow Frontdrop in System Settings → General → Login Items & Extensions." }
         } catch { self.error = "Could not change Start at Login: \(error.localizedDescription)" }
     }
-    func chooseVideos() {
+    @discardableResult
+    func chooseVideos() -> Bool {
         let panel = NSOpenPanel()
         panel.allowedContentTypes = [.movie, .video]
         panel.allowsMultipleSelection = true
         panel.canChooseDirectories = false
-        panel.prompt = "Import Videos"
-        guard panel.runModal() == .OK else { return }
-        Task { await importVideos(panel.urls) }
+        panel.prompt = "Add Wallpapers"
+        panel.message = "Choose MP4, MOV, or other playable video files from your Mac."
+        guard panel.runModal() == .OK else { return false }
+        return addVideos(panel.urls)
+    }
+    @discardableResult
+    func addVideos(_ urls: [URL]) -> Bool {
+        guard !importing, !urls.isEmpty else { return false }
+        var entries: [(url: URL, title: String?)] = []
+        for (index, url) in urls.enumerated() {
+            let alert = NSAlert()
+            alert.messageText = "Name your wallpaper"
+            alert.informativeText = "\(url.lastPathComponent) will be copied into your Frontdrop library.\(urls.count > 1 ? " (\(index + 1) of \(urls.count))" : "")"
+            alert.addButton(withTitle: "Add Wallpaper")
+            alert.addButton(withTitle: "Cancel")
+            let field = NSTextField(frame: NSRect(x: 0, y: 0, width: 330, height: 24))
+            field.stringValue = url.deletingPathExtension().lastPathComponent
+            field.placeholderString = "Wallpaper name"
+            alert.accessoryView = field
+            alert.window.initialFirstResponder = field
+            guard alert.runModal() == .alertFirstButtonReturn else { return false }
+            entries.append((url: url, title: field.stringValue))
+        }
+        Task { await importVideos(entries) }
+        return true
     }
     func chooseWorkshopVideo(completion: @escaping (Wallpaper) -> Void) {
         let panel = NSOpenPanel()
@@ -146,11 +169,15 @@ final class LibraryStore: ObservableObject {
         }
     }
     func importVideos(_ urls: [URL]) async {
+        await importVideos(urls.map { (url: $0, title: nil) })
+    }
+    func importVideos(_ entries: [(url: URL, title: String?)]) async {
         importing = true
         defer { importing = false }
-        for url in urls {
+        for entry in entries {
             do {
-                _ = try await importVideo(url, title: nil, sourceURL: nil, category: "Imported")
+                let trimmed = entry.title?.trimmingCharacters(in: .whitespacesAndNewlines)
+                _ = try await importVideo(entry.url, title: trimmed?.isEmpty == false ? trimmed : nil, sourceURL: nil, category: "Imported")
             } catch { self.error = "Import failed: \(error.localizedDescription)" }
         }
     }

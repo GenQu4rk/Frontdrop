@@ -1,5 +1,9 @@
 # Verification — 19 October 2026
 
+## Release check — 1.6.0 (3 November 2026)
+
+The standalone test suite passed, including update version ordering, compatible DMG detection, safe release-link construction, and malformed-tag rejection. The release build compiled and was ad-hoc signed. The real-video integration suite passed with a generated two-second H.264 MP4: a user-supplied wallpaper name was trimmed, saved, restored, and removed; the existing import, playback, preview, WebKit, and storage regressions also passed. The file-picker naming and Finder drop interactions were compiled but were not manually exercised in a live window. The release asset and checksum will be checked separately after publication.
+
 ## Release check — 1.5.3 (3 November 2026)
 
 Prepared an Apple silicon DMG with the repeatable `scripts/package-dmg.sh` workflow. This build is ad-hoc signed, not Developer ID signed or notarized. Historical checks below remain dated records, not claims of current coverage.

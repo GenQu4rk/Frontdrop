@@ -9,6 +9,7 @@ struct LibraryView: View {
     @State<String> private var search = ""
     @State<Bool> private var previewPlaying = true
     @State<Wallpaper?> private var pendingDelete: Wallpaper?
+    @State private var isDropTargeted = false
     private let accent = Color(red: 0.66, green: 0.83, blue: 0.71)
     private let sections: [(String, String)] = [("All wallpapers", "square.grid.2x2"), ("Favourites", "heart"), ("Nature", "leaf"), ("Abstract", "water.waves"), ("Anime & Games", "sparkles"), ("Space", "moon.stars"), ("Scenes", "video"), ("Downloaded", "arrow.down.circle"), ("Imported", "film")]
 
@@ -47,6 +48,13 @@ struct LibraryView: View {
                     }
                 }.listStyle(.sidebar)
                 VStack(alignment: .leading, spacing: 8) {
+                    Button { if model.chooseVideos() { section = "Imported" } } label: {
+                        Label("Add your own MP4…", systemImage: "plus.circle.fill")
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .disabled(model.importing)
+                    Text("Choose a file from your Mac, or drop a video anywhere in this window.")
+                        .font(.caption).foregroundStyle(.secondary)
                     Label("Yours, without limits", systemImage: "checkmark.seal").font(.callout.weight(.medium))
                     Text("Community videos. Your own collection.\nNo Frontdrop subscription.")
                         .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
@@ -108,7 +116,7 @@ struct LibraryView: View {
         .frame(width: available.size.width, height: available.size.height)
         .tint(accent)
         .toolbar {
-            ToolbarItem { Button { model.chooseVideos() } label: { Label("Import Video",systemImage: "plus") }.disabled(model.importing).help("Import an MP4, MOV, or another playable video") }
+            ToolbarItem { Button { if model.chooseVideos() { section = "Imported" } } label: { Label("Add Video File…",systemImage: "plus") }.disabled(model.importing).help("Choose an MP4, MOV, or another playable video from your Mac") }
             ToolbarItem { SettingsLink { Image(systemName: "slider.horizontal.3") }.help("Playback settings") }
         }
         .searchable(text: $search, placement: .toolbar, prompt: isBrowsing ? "Search catalogue" : "Search wallpapers")
@@ -128,6 +136,9 @@ struct LibraryView: View {
         .overlay {
             if model.importing { ProgressView("Importing video…").padding(24).background(.regularMaterial,in: RoundedRectangle(cornerRadius: 12)) }
         }
+        .overlay {
+            if isDropTargeted { RoundedRectangle(cornerRadius: 14).strokeBorder(accent, lineWidth: 3).padding(8).allowsHitTesting(false) }
+        }
         .alert("Frontdrop needs your attention", isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })) {
             Button("OK") { model.error = nil }
         } message: { Text(model.error ?? "") }
@@ -135,6 +146,13 @@ struct LibraryView: View {
             Button("Remove Video", role: .destructive) { if let pendingDelete { model.remove(pendingDelete) }; pendingDelete = nil }
         } message: { Text("The copy in your Frontdrop library will be deleted. Your original video will stay where it is.") }
         .onAppear { model.start() }
+        .dropDestination(for: URL.self, action: { urls, _ in
+            guard !urls.isEmpty, urls.allSatisfy(\.isFileURL) else { return false }
+            Task { @MainActor in
+                if model.addVideos(urls) { section = "Imported" }
+            }
+            return true
+        }, isTargeted: { isDropTargeted = $0 })
         }
         .frame(minWidth: 920, minHeight: 660)
     }
@@ -227,6 +245,9 @@ struct LibraryView: View {
 
 struct PlaybackSettings: View {
     @EnvironmentObject var model: LibraryStore
+    @State private var checkingForUpdates = false
+    @State private var updateStatus: String?
+    @State private var updateURL: URL?
     var body: some View {
         Form {
             Section("Playback") {
@@ -251,12 +272,39 @@ struct PlaybackSettings: View {
                 Text("Cycles through your favourites, or the whole collection if you haven’t saved any. Rotation waits while playback is paused.").font(.caption).foregroundStyle(.secondary)
             }
             Section("Frontdrop") {
+                Button(checkingForUpdates ? "Checking for Updates…" : "Check for Updates") {
+                    Task {
+                        checkingForUpdates = true
+                        updateStatus = nil
+                        updateURL = nil
+                        defer { checkingForUpdates = false }
+                        do {
+                            let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0.0.0"
+                            #if arch(arm64)
+                            let architecture = "arm64"
+                            #else
+                            let architecture = "x86_64"
+                            #endif
+                            switch try await UpdateChecker.check(currentVersion: version, architecture: architecture) {
+                            case .current:
+                                updateStatus = "Frontdrop \(version) is up to date."
+                            case .available(let latest, let url):
+                                updateStatus = "Frontdrop \(latest) is available."
+                                updateURL = url
+                            case .noCompatibleDownload(let latest):
+                                updateStatus = "Frontdrop \(latest) is available, but has no compatible Mac download yet."
+                            }
+                        } catch { updateStatus = error.localizedDescription }
+                    }
+                }.disabled(checkingForUpdates)
+                if let updateStatus { Text(updateStatus).font(.caption).foregroundStyle(.secondary) }
+                if let updateURL { Link("View Release and Download", destination: updateURL) }
                 Toggle("Start at login",isOn: Binding(get: { model.loginEnabled },set: { model.setLogin($0) }))
                 Text("Wallpaper storage").font(.caption).foregroundStyle(.secondary)
                 Text(model.directory.path).font(.caption).textSelection(.enabled).fixedSize(horizontal: false, vertical: true)
                 Button("Show video library in Finder") { NSWorkspace.shared.open(model.directory.appendingPathComponent("Videos")) }
                 Text("Desktop wallpapers only. Your macOS Lock Screen stays under macOS control. Stop or quit Frontdrop to reveal your existing wallpaper.").font(.caption).foregroundStyle(.secondary)
             }
-        }.formStyle(.grouped).frame(width: 480,height: 550)
+        }.formStyle(.grouped).frame(width: 480,height: 590)
     }
 }

@@ -14,6 +14,16 @@ struct IntegrationTests {
         let scene = model.state.imports[0]
         let copied = model.videoURL(for: scene)!
         precondition(copied != source && FileManager.default.fileExists(atPath: copied.path), "Import must own its copy")
+        await model.importVideos([(url: source, title: "  My Aurora  ")])
+        precondition(model.state.imports.last?.title == "My Aurora", "A user-supplied name must be trimmed and saved")
+        let namedID = model.state.imports.last!.id
+        precondition(LibraryStore(directory: root).state.imports.last?.title == "My Aurora", "Custom import name must persist")
+        model.remove(model.state.imports.last!)
+        precondition(!model.state.imports.contains(where: { $0.id == namedID }), "Named import must be removable")
+        await model.importVideos([(url: source, title: "  ")])
+        precondition(model.state.imports.last?.title == source.deletingPathExtension().lastPathComponent, "An empty name should fall back to the filename")
+        model.remove(model.state.imports.last!)
+        print("PASS: custom file name is trimmed, saved, restored and removable")
         model.favourite(scene)
         model.apply(scene)
         let restored = LibraryStore(directory: root)
